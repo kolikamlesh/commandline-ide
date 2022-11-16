@@ -1,0 +1,239 @@
+
+####### globle variabls ##
+
+level=$(cat "$HOME/.g/temp")
+mod=$((10 + $level))
+tm=2
+lv=0
+num1=0
+####### functions ######
+
+ dif() {          # difficulty function
+
+    clear
+   
+    level=$(($level+1)) 
+    echo $level
+    echo $level > $HOME/.g/temp
+    clear
+    
+
+    # saying thank you
+ 
+    cowsay -f turtle.cow " THANK YOU "
+         
+    sleep 3s
+ 
+ }
+
+ stop() { read p; }     # stop function
+ 
+
+ # spacing function
+ 
+ e() {
+  
+      x=1
+      while [ $x -le $1 ]
+      do
+      echo
+      x=$(( $x + 1 ))
+      done
+  
+    }
+
+ config() {
+
+
+      clear
+      e 2
+      echo "              ********************   CONFIGURATIONS   ********************"
+      e 3
+      echo "              > Difficulty Level ::-:: $level"
+      e 2
+      read -p "              > Number Of Quastions ::-:: " MAX
+
+      if [ -z "$MAX" ]
+       then
+        MAX=30
+       fi
+     
+    
+    }
+
+  
+ add() {       # main work
+
+
+    clear
+   
+    y=1
+    sum=0
+    e 2
+    figlet "                                 SUM"
+    sleep 2s
+    clear
+    while [ $y -le $MAX ]
+    do
+
+    y=$(($y+1))
+    z=1 
+
+    # setting number of quastions
+    range=$(($RANDOM%5))
+    if [ $range -le 1 ]
+    then
+     range=$(($range+2))
+    fi
+    while [ $z -le $range ]
+    do
+
+      clear
+      z=$(($z+1))
+
+      # generating number
+      num=$(($RANDOM%$mod))
+      num=$(($num+1))
+
+      # for negative ##############
+      #if [ $(($RANDOM%10)) -le 5 ]
+      #then
+      #num=$((-1*$num))
+      #fi     #####################
+
+      # managing sleep #
+      #if [ $num -ge 11 ]
+      #then
+      # tm=$(($tm+1))
+      #elif [ $num -le -11 ]
+      #then
+      # tm=$(($tm+2))
+      #fi
+     
+      echo "[ $(($y-1)) : $(($z-1)) ]::[ $num1 ]"
+      rcol
+      e 6
+      figlet "                                            $num"
+     
+      sleep 3s
+      sum=$(($num+$sum))
+      num1=$num
+      done
+
+      clear
+      e 5
+      col 82
+      figlet "                            ans   :   $sum"
+      sleep 1s
+
+      # resetting variables
+      sum=0
+      z=0
+      tm=3
+
+   done
+  
+ }
+
+ mul() {
+
+  
+  y=1
+  clear
+  e 6
+  figlet "   MULTIPLICATION"
+  sleep 2s
+  while [ $y -lt $MAX ]
+   do
+
+   clear
+    
+    # setting variables
+
+    echo "::[ $y ]::"
+   
+    y=$(($y+1))
+    num=$(($RANDOM%$mod))
+    num2=$(($RANDOM%10))
+    
+    # checking first and sec number
+    if [ $num -lt 12 ]
+     then   
+
+      num=$(($num+10))
+      
+     fi
+
+     if [ $num2 -lt 2 ] 
+      then
+       num2=2
+      fi
+
+    rcol
+    e 6
+    figlet "                                  $num  X  $num2"
+    sleep 6s
+    mul=$(($num*$num2))
+
+    clear
+    e 5
+    col 82
+    figlet "                            ans   :   $mul"
+    sleep 1s
+
+    done
+
+ }
+
+ sqr() {
+
+   clear
+   e 2
+   p=11
+   rcol
+   figlet "                               squares"
+   sleep 2s
+   
+   while [ $p -le 30 ]
+   do
+   
+   clear
+   e 5
+   rcol  
+
+    figlet "                                        $p"
+    sleep 3s
+    mul=$(($p*$p))
+    
+
+   e 2
+   figlet "                           ans  :  $mul" 
+   sleep 3s
+
+   p=$(($p+1))
+   done
+   
+ }
+
+                       
+ g() {
+
+  
+   clear
+
+   # calling functions
+
+   config   # configuration fun
+   add      # addition fun
+   mul      # multiplication fun
+   dif      # difficulty fun
+        
+  
+ }
+
+# calling start function
+
+g   
+ 
+
+ clear

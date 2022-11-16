@@ -1,0 +1,1 @@
+nano -H -O -P -S -T 3 -a -g -i -l -t -x $1

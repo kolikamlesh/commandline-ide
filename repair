@@ -1,0 +1,74 @@
+# file repaire utiliti
+# CHECKING MISSING FILES 
+
+# parent directory
+
+if [ ! -d .c_pro ];
+then 
+mkdir .c_pro 
+fi
+
+
+# output
+
+if [ ! -d .c_pro/output ];
+then 
+mkdir .c_pro/output
+fi
+
+if [ ! -d .c_pro/output/c ];
+then 
+mkdir .c_pro/output/c
+fi
+
+if [ ! -d .c_pro/output/cpp ];
+then 
+mkdir .c_pro/output/cpp
+fi
+
+
+# text
+
+if [ ! -d .c_pro/text ];
+then 
+mkdir .c_pro/text
+fi
+
+if [ ! -f .c_pro/text/temp2 ];
+then 
+touch .c_pro/text/temp2
+fi
+
+if [ ! -f .c_pro/text/temp ];
+then 
+touch .c_pro/text/temp
+fi
+
+if [ ! -f .c_pro/text/c ];
+then 
+touch .c_pro/text/c
+fi
+
+if [ ! -f .c_pro/text/cpp ];
+then 
+touch .c_pro/text/cpp
+fi
+
+
+# programs
+
+if [ ! -d .c_pro/programs ];
+then 
+mkdir .c_pro/programs
+fi
+
+
+if [ ! -d .c_pro/programs/c ];
+then 
+mkdir .c_pro/programs/c
+fi
+
+if [ ! -d .c_pro/programs/cpp ];
+then 
+mkdir .c_pro/programs/cpp
+fi
